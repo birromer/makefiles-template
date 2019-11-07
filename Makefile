@@ -2,7 +2,7 @@ CC := g++
 
 LIB_DIR := lib
 INC_DIR := include
-BIN_DIR := bin
+OBJ_DIR := bin
 SRC_DIR := src
 
 INC := -I$(INC_DIR)
@@ -65,4 +65,4 @@ print-%:
 	@echo "$* = $($*)"
 
 clean:
-	rm -f $(OBJS) $(BIN_DIR)/$(PROG)
+	rm -f $(OBJ_DIR)/*.o $(TARGET_EXE)
