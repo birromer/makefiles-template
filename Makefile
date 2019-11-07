@@ -5,10 +5,13 @@ INC_DIR := include
 BIN_DIR := bin
 SRC_DIR := src
 
+INC := -I$(INC_DIR)
+LIB := -L$(LIB_DIR)
+
 OUT_DIR := build
 
-CFLAGS += `pkg-config --cflags opencv4`
-LDFLAGS += -ggdb `pkg-config --libs opencv4`
+CFLAGS += -ggdb `pkg-config --cflags opencv4`
+LDFLAGS += `pkg-config --libs opencv4`
 
 
 # defines what is the main (everything on src/)
@@ -23,10 +26,11 @@ PROG =
 OBJS = $(PROG).o
 
 
-# Rules of rules
+# == Rules of rules == 
 # Create executables
 
-
+$(TARGET_EXE): $(OUT_DIR)/%: $(SRC_DIR)/%.cpp $(OBJ)
+	$(CC) -o $@ $^ $(INC) $(CFLAGS) $(LIB) $(LDFLAGS) 
 
 
 
